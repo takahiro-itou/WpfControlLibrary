@@ -4,10 +4,10 @@
   <PropertyGroup>
     <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
     <ImplicitUsings>enable</ImplicitUsings>
-    <LangVersion>10.0<LangVersion>
+    <LangVersion>10.0</LangVersion>
     <Nullable>enable</Nullable>
     <Platforms>x64;Win32;Any CPU</Platforms>
-    <RootNamespace>WpfControl<RootNamespace>
+    <RootNamespace>WpfControl</RootNamespace>
     <TargetFramework>net8.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
   </PropertyGroup>
