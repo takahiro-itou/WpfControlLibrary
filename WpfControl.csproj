@@ -12,6 +12,8 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <Import Project="..\Props\OutputLibs.props" />
+
   <ItemGroup>
   </ItemGroup>
 
