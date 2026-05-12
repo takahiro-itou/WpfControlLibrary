@@ -15,6 +15,7 @@
   <Import Project="Props\OutputLibs.props" />
 
   <ItemGroup>
+    <Compile Include="Sample\SampleControl\ISampleViewModel.cs" />
     <Compile Include="Sample\SampleControl\SampleControl.xaml.cs" />
   </ItemGroup>
 
