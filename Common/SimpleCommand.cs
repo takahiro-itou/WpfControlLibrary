@@ -42,10 +42,48 @@ public  class  SimpleCommand : ICommand
 //    Public Properties (Implement Interface).
 //
 
+    //----------------------------------------------------------------
+    /**   コマンドが実行可能か否かを返す。
+    **
+    **/
+    public bool CanExecute(object? parameter)
+        => this.m_canExecute?.Invoke(parameter) ?? true;
+
+    //----------------------------------------------------------------
+    /**
+    **
+    **/
+    public void Execute(object? paramter)
+        => this.m_execute(parameter);
+
+    //----------------------------------------------------------------
+    /**
+    **
+    **/
+    public event EventHandler?  CanexecuteChanged;
+
+//========================================================================
+//
+//    Public Member Functions (Implement Interface).
+//
+
+    //----------------------------------------------------------------
+    /**   CanExecuteChanged イベントを発生させる。
+    **
+    **/
+    public void RaiseCanExecuteChanged()
+        => CanExecuteChanged?.Invoke(this, EventArgs.Empty);
+
 //========================================================================
 //
 //    Member Variables.
 //
+
+    /**   実行する内容。    **/
+    private readonly  Action<object?>       m_execute;
+
+    /**   実行可否の判定。  **/
+    private readonly  Predicate<object?>?   m_canExecute;
 
 }   //  End class AbstractSampleViewModel
 
