@@ -32,6 +32,19 @@ public  class  SimpleCommand : ICommand
 //    Constructor(s) and Destructor.
 //
 
+    //----------------------------------------------------------------
+    /**   コンストラクタ。
+    **
+    **/
+    public SimpleCommand(
+            Action<object?>     execute,
+            Predicate<object?>? canExecute = null)
+    {
+        this.m_execute  = execute ?? throw new ArgumentNullException(
+                nameof(execute));
+        this.m_canExecute = canExecute;
+    }
+
 //========================================================================
 //
 //    Public Member Functions (Implement Interface).
