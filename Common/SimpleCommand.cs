@@ -60,7 +60,7 @@ public  class  SimpleCommand : ICommand
     /**
     **
     **/
-    public event EventHandler?  CanexecuteChanged;
+    public event EventHandler?  CanExecuteChanged;
 
 //========================================================================
 //
