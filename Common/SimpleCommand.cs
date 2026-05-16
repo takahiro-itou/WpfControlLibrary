@@ -53,7 +53,7 @@ public  class  SimpleCommand : ICommand
     /**
     **
     **/
-    public void Execute(object? paramter)
+    public void Execute(object? parameter)
         => this.m_execute(parameter);
 
     //----------------------------------------------------------------
