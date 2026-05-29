@@ -9,7 +9,9 @@
     <Nullable>enable</Nullable>
     <Platforms>x64;Win32;Any CPU</Platforms>
     <RootNamespace>WpfControl</RootNamespace>
-    <TargetFramework>net8.0-windows</TargetFramework>
+    <TargetFrameworks>
+      net48;
+    </TargetFrameworks>
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
