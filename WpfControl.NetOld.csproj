@@ -21,10 +21,10 @@
     <Compile Include="Common\SimpleCommand.cs" />
 
     <Compile Include="Sample\SampleControl\AbstractSampleModel.cs" />
-    <Compile Include="Sample\SampleControl\AbstractSampleViewModel.cs" />
     <Compile Include="Sample\SampleControl\ISampleModel.cs" />
     <Compile Include="Sample\SampleControl\ISampleViewModel.cs" />
     <Compile Include="Sample\SampleControl\SampleControl.xaml.cs" />
+    <Compile Include="Sample\SampleControl\SampleViewModel.cs" />
   </ItemGroup>
 
 </Project>
