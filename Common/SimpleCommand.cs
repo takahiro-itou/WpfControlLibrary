@@ -45,6 +45,7 @@ public  class  SimpleCommand : ICommand
         this.m_canExecute = canExecute;
     }
 
+
 //========================================================================
 //
 //    Public Member Functions (Implement Interface).
@@ -75,6 +76,7 @@ public  class  SimpleCommand : ICommand
     **/
     public event EventHandler?  CanExecuteChanged;
 
+
 //========================================================================
 //
 //    Public Member Functions (Implement Interface).
@@ -86,6 +88,7 @@ public  class  SimpleCommand : ICommand
     **/
     public void RaiseCanExecuteChanged()
         => CanExecuteChanged?.Invoke(this, EventArgs.Empty);
+
 
 //========================================================================
 //
