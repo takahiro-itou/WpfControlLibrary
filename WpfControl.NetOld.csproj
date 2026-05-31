@@ -7,7 +7,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <LangVersion>10.0</LangVersion>
     <Nullable>enable</Nullable>
-    <Platforms>x64;Win32;Any CPU</Platforms>
+    <Platforms>x64;Win32</Platforms>
     <RootNamespace>WpfControl</RootNamespace>
     <TargetFrameworks>
       net48;
@@ -20,9 +20,11 @@
   <ItemGroup>
     <Compile Include="Common\SimpleCommand.cs" />
 
-    <Compile Include="Sample\SampleControl\AbstractSampleViewModel.cs" />
+    <Compile Include="Sample\SampleControl\AbstractSampleModel.cs" />
+    <Compile Include="Sample\SampleControl\ISampleModel.cs" />
     <Compile Include="Sample\SampleControl\ISampleViewModel.cs" />
     <Compile Include="Sample\SampleControl\SampleControl.xaml.cs" />
+    <Compile Include="Sample\SampleControl\SampleViewModel.cs" />
   </ItemGroup>
 
 </Project>
