@@ -1,3 +1,6 @@
 [submodule "Sample/SampleControl"]
 	path = Sample/SampleControl
 	url  = ../wpfucSampleControl.git
+[submodule "Utils/RectSelectWindow"]
+	path = Utils/RectSelectWindow
+	url = git@gitlab.com:takahiro-itou/wpfRectSelectWindow.git
