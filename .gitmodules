@@ -1,3 +1,9 @@
 [submodule "Sample/SampleControl"]
 	path = Sample/SampleControl
 	url  = ../wpfucSampleControl.git
+[submodule "Utils/ProgressBar"]
+	path = Utils/ProgressBar
+	url  = ../wpfucProgressBar.git
+[submodule "Utils/RectSelectWindow"]
+	path = Utils/RectSelectWindow
+	url  = ../wpfRectSelectWindow.git
