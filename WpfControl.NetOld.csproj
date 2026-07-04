@@ -26,7 +26,11 @@
     <Compile Include="Sample\SampleControl\SampleControl.xaml.cs" />
     <Compile Include="Sample\SampleControl\SampleViewModel.cs" />
 
+    <Compile Include="Utils\ProgressBar\AbstractProgressModel.cs" />
+    <Compile Include="Utils\ProgressBar\IProgressModel.cs" />
+    <Compile Include="Utils\ProgressBar\IProgressViewModel.cs" />
     <Compile Include="Utils\ProgressBar\ProgressControl.xaml.cs" />
+    <Compile Include="Utils\ProgressBar\ProgressViewModel.cs" />
   </ItemGroup>
 
 </Project>
