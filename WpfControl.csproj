@@ -23,6 +23,8 @@
     <Compile Include="Sample\SampleControl\ISampleViewModel.cs" />
     <Compile Include="Sample\SampleControl\SampleControl.xaml.cs" />
     <Compile Include="Sample\SampleControl\SampleViewModel.cs" />
+
+    <Compile Include="Utils\ProgressBar\ProgressControl.xaml.cs" />
   </ItemGroup>
 
 </Project>
