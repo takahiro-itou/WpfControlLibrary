@@ -24,7 +24,7 @@ namespace WpfControl.Common
 //    SimpleCommand  class.
 //
 
-public  class  SimpleCommand : ICommand
+public  class  SimpleCommand<T> : ICommand
 {
 
 //========================================================================
@@ -37,7 +37,7 @@ public  class  SimpleCommand : ICommand
 **
 **/
 public SimpleCommand(
-        Action<object?>     execute,
+        Action<T>           execute,
         Predicate<object?>? canExecute = null)
 {
     this.m_execute  = execute ?? throw new ArgumentNullException(
@@ -49,11 +49,6 @@ public SimpleCommand(
 //========================================================================
 //
 //    Public Member Functions (Implement Interface).
-//
-
-//========================================================================
-//
-//    Public Properties (Implement Interface).
 //
 
 //----------------------------------------------------------------
@@ -73,7 +68,10 @@ CanExecute(object? parameter)
 public  void
 Execute(object? parameter)
 {
-    this.m_execute(parameter);
+    T tparam = (parameter is T)
+        ? (T)parameter
+        : (T)s_typeConverter.ConvertFrom(parameter);
+    this.m_execute(tparam);
 }
 
 
@@ -91,7 +89,7 @@ public  event   EventHandler?   CanExecuteChanged;
 
 //========================================================================
 //
-//    Public Member Functions (Implement Interface).
+//    Public Member Functions.
 //
 
 //----------------------------------------------------------------
@@ -111,10 +109,13 @@ RaiseCanExecuteChanged()
 //
 
 /**   実行する内容。    **/
-private  readonly   Action<object?>         m_execute;
+private  readonly   Action<T>               m_execute;
 
 /**   実行可否の判定。  **/
 private  readonly   Predicate<object?>?     m_canExecute;
+
+private  static     TypeConverter
+    s_typeConverter = TypeDescriptor.GetConverter(typeof(T));
 
 }   //  End class AbstractSampleViewModel
 
