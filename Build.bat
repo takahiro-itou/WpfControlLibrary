@@ -1,6 +1,6 @@
 
 set  solution=WpfControl
-set  config="Debug"
+set  config="Release"
 
 
 msbuild  -restore  -t:Build     ^
