@@ -68,9 +68,12 @@ CanExecute(object? parameter)
 public  void
 Execute(object? parameter)
 {
-    T tparam = (parameter is T)
-        ? (T)parameter
-        : (T)s_typeConverter.ConvertFrom(parameter);
+    T tparam = default(T);
+    if (parameter is not null) {
+        tparam = (parameter is T)
+            ? (T)parameter
+            : (T)s_typeConverter.ConvertFrom(parameter);
+    }
     this.m_execute(tparam);
 }
 
