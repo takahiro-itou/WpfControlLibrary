@@ -45,6 +45,19 @@ AbstractSimpleCommand(
 
 //========================================================================
 //
+//    Public Member Functions (Pure Virtual Functions).
+//
+
+//----------------------------------------------------------------
+/**
+**
+**/
+public  abstract  void
+Execute(object? parameter);
+
+
+//========================================================================
+//
 //    Public Member Functions (Implement Interface).
 //
 

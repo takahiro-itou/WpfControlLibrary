@@ -16,15 +16,14 @@ using System.ComponentModel;
 using System.Windows.Input;
 
 
-namespace WpfControl.Common
-{
+namespace  WpfControl.Common  {
 
 //========================================================================
 //
 //    SimpleCommand  class.
 //
 
-public  class  SimpleCommand<T> : ICommand
+public  class  SimpleCommand<T> : AbstractSimpleCommand
 {
 
 //========================================================================
@@ -36,13 +35,14 @@ public  class  SimpleCommand<T> : ICommand
 /**   コンストラクタ。
 **
 **/
-public SimpleCommand(
+public
+SimpleCommand(
         Action<T>           execute,
         Predicate<object?>? canExecute = null)
+    : base(canExecute)
 {
     this.m_execute  = execute ?? throw new ArgumentNullException(
             nameof(execute));
-    this.m_canExecute = canExecute;
 }
 
 
@@ -52,20 +52,10 @@ public SimpleCommand(
 //
 
 //----------------------------------------------------------------
-/**   コマンドが実行可能か否かを返す。
-**
-**/
-public  bool
-CanExecute(object? parameter)
-{
-    return ( this.m_canExecute?.Invoke(parameter) ?? true );
-}
-
-//----------------------------------------------------------------
 /**
 **
 **/
-public  void
+public  override  void
 Execute(object? parameter)
 {
     T tparam = default(T);
@@ -76,19 +66,6 @@ Execute(object? parameter)
     }
     this.m_execute(tparam);
 }
-
-
-//========================================================================
-//
-//    Public Events (Implement Interface).
-//
-
-//----------------------------------------------------------------
-/**
-**
-**/
-public  event   EventHandler?   CanExecuteChanged;
-
 
 //========================================================================
 //
@@ -102,7 +79,7 @@ public  event   EventHandler?   CanExecuteChanged;
 public  void
 RaiseCanExecuteChanged()
 {
-    CanExecuteChanged?.Invoke(this, EventArgs.Empty);
+    base.raiseCanExecuteChangedEvent();
 }
 
 
@@ -112,10 +89,7 @@ RaiseCanExecuteChanged()
 //
 
 /**   実行する内容。    **/
-private  readonly   Action<T>               m_execute;
-
-/**   実行可否の判定。  **/
-private  readonly   Predicate<object?>?     m_canExecute;
+private  readonly   Action<T>       m_execute;
 
 private  static     TypeConverter
     s_typeConverter = TypeDescriptor.GetConverter(typeof(T));
