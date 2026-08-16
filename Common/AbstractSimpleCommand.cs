@@ -15,7 +15,7 @@
 using System.ComponentModel;
 using System.Windows.Input;
 
-using ExecPred = Predicate<object>
+using ExecPred = System.Predicate<object>;
 
 namespace  WpfControl.Common  {
 
@@ -69,7 +69,7 @@ Execute(object? parameter);
 public  bool
 CanExecute(object? parameter)
 {
-    return ( this.m_canExecute?.Invoke(parameter) ?? true );
+    return ( this.m_canExec?.Invoke(parameter) ?? true );
 }
 
 
@@ -117,7 +117,7 @@ RaiseCanExecuteChanged()
 //
 
 /**   実行可否の判定。  **/
-private  readonly   ExecPred?   m_canExecute;
+private  readonly   ExecPred?   m_canExec;
 
 
 }   //  End class  AbstractSimpleCommand
