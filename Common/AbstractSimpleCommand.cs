@@ -24,7 +24,7 @@ namespace  WpfControl.Common  {
 //    AbstractSimpleCommand  class.
 //
 
-public abstract class  AbstractSimpleCommand : ICommand
+public abstract class  AbstractSimpleCommand<TDlgAct> : ICommand
 {
 
 //========================================================================
@@ -38,8 +38,11 @@ public abstract class  AbstractSimpleCommand : ICommand
 **/
 public
 AbstractSimpleCommand(
-        ExecPred?   canExecute = null)
+        TDlgAct     execute,
+        ExecPred?   canExec = null)
 {
+    this.m_execute  = execute ?? throw new ArgumentNullException(
+            nameof(execute));
     this.m_canExec  = canExecute;
 }
 
@@ -116,8 +119,11 @@ RaiseCanExecuteChanged()
 //    Member Variables.
 //
 
+/**   実行する内容。    **/
+protected readonly  TDlgAct     m_execute;
+
 /**   実行可否の判定。  **/
-private  readonly   ExecPred?   m_canExec;
+private   readonly  ExecPred?   m_canExec;
 
 
 }   //  End class  AbstractSimpleCommand

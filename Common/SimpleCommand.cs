@@ -24,7 +24,7 @@ namespace  WpfControl.Common  {
 //    SimpleCommand  class.
 //
 
-public  class  SimpleCommand : AbstractSimpleCommand
+public  class  SimpleCommand : AbstractSimpleCommand<Action>
 {
 
 //----------------------------------------------------------------
@@ -35,10 +35,8 @@ public
 SimpleCommand(
         Action              execute,
         Predicate<object?>? canExecute = null)
-    : base(canExecute)
+    : base(execute, canExecute)
 {
-    this.m_execute  = execute ?? throw new ArgumentNullException(
-            nameof(execute));
 }
 
 //----------------------------------------------------------------
@@ -51,11 +49,6 @@ Execute(object? parameter)
     this.m_execute();
 }
 
-
-/**   実行する内容。    **/
-private   readonly  Action      m_execute;
-
-
 }   //  End class  SimpleCommand
 
 
@@ -64,7 +57,7 @@ private   readonly  Action      m_execute;
 //    SimpleCommand<T>  class.
 //
 
-public  class  SimpleCommand<T> : AbstractSimpleCommand
+public  class  SimpleCommand<T> : AbstractSimpleCommand<Action<T> >
 {
 
 //========================================================================
@@ -80,10 +73,8 @@ public
 SimpleCommand(
         Action<T>           execute,
         Predicate<object?>? canExecute = null)
-    : base(canExecute)
+    : base(execute, canExecute)
 {
-    this.m_execute  = execute ?? throw new ArgumentNullException(
-            nameof(execute));
 }
 
 
@@ -117,9 +108,6 @@ Execute(object? parameter)
 //
 //    Member Variables.
 //
-
-/**   実行する内容。    **/
-private  readonly   Action<T>       m_execute;
 
 private  static     TypeConverter
     s_typeConverter = TypeDescriptor.GetConverter(typeof(T));
