@@ -18,9 +18,50 @@ using System.Windows.Input;
 
 namespace  WpfControl.Common  {
 
+
 //========================================================================
 //
 //    SimpleCommand  class.
+//
+
+public  class  SimpleCommand : AbstractSimpleCommand
+{
+
+//----------------------------------------------------------------
+/**   コンストラクタ。
+**
+**/
+public
+SimpleCommand(
+        Action              execute,
+        Predicate<object?>? canExecute = null)
+    : base(canExecute)
+{
+    this.m_execute  = execute ?? throw new ArgumentNullException(
+            nameof(execute));
+}
+
+//----------------------------------------------------------------
+/**
+**
+**/
+public  override  void
+Execute(object? parameter)
+{
+    this.m_execute();
+}
+
+
+/**   実行する内容。    **/
+private   readonly  Action      m_execute;
+
+
+}   //  End class  SimpleCommand
+
+
+//========================================================================
+//
+//    SimpleCommand<T>  class.
 //
 
 public  class  SimpleCommand<T> : AbstractSimpleCommand
@@ -72,17 +113,6 @@ Execute(object? parameter)
 //    Public Member Functions.
 //
 
-//----------------------------------------------------------------
-/**   CanExecuteChanged イベントを発生させる。
-**
-**/
-public  void
-RaiseCanExecuteChanged()
-{
-    base.raiseCanExecuteChangedEvent();
-}
-
-
 //========================================================================
 //
 //    Member Variables.
@@ -94,6 +124,6 @@ private  readonly   Action<T>       m_execute;
 private  static     TypeConverter
     s_typeConverter = TypeDescriptor.GetConverter(typeof(T));
 
-}   //  End class AbstractSampleViewModel
+}   //  End class  SimpleCommand<T>
 
-}   //  End of namespace  WpfControl.Sample
+}   //  End of namespace  WpfControl.Common

@@ -15,6 +15,7 @@
 using System.ComponentModel;
 using System.Windows.Input;
 
+using ExecPred = Predicate<object>
 
 namespace  WpfControl.Common  {
 
@@ -37,9 +38,9 @@ public abstract class  AbstractSimpleCommand : ICommand
 **/
 public
 AbstractSimpleCommand(
-        Predicate<object?>? canExecute = null)
+        ExecPred?   canExecute = null)
 {
-    this.m_canExecute = canExecute;
+    this.m_canExec  = canExecute;
 }
 
 
@@ -93,10 +94,20 @@ public  event   EventHandler?   CanExecuteChanged;
 /**   CanExecuteChanged イベントを発生させる。
 **
 **/
-public  void
+public  virtual  void
 raiseCanExecuteChangedEvent()
 {
     CanExecuteChanged?.Invoke(this, EventArgs.Empty);
+}
+
+//----------------------------------------------------------------
+/**   CanExecuteChanged イベントを発生させる。
+**
+**/
+public  void
+RaiseCanExecuteChanged()
+{
+    raiseCanExecuteChangedEvent();
 }
 
 
@@ -106,9 +117,9 @@ raiseCanExecuteChangedEvent()
 //
 
 /**   実行可否の判定。  **/
-private  readonly   Predicate<object?>?     m_canExecute;
+private  readonly   ExecPred?   m_canExecute;
 
 
-}   //  End class AbstractSampleViewModel
+}   //  End class  AbstractSimpleCommand
 
-}   //  End of namespace  WpfControl.Sample
+}   //  End of namespace  WpfControl.Common
