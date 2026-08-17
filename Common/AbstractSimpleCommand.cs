@@ -98,7 +98,7 @@ public  event   EventHandler?   CanExecuteChanged;
 **
 **/
 public  virtual  void
-raiseCanExecuteChangedEvent()
+raiseCanExecuteChanged()
 {
     CanExecuteChanged?.Invoke(this, EventArgs.Empty);
 }
