@@ -15,7 +15,7 @@
 using System.ComponentModel;
 using System.Windows.Input;
 
-using ExecPred = System.Predicate<object>?;
+using ExecPred = System.Predicate<object?>;
 
 namespace  WpfControl.Common  {
 
