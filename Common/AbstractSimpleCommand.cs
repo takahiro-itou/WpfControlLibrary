@@ -25,6 +25,7 @@ namespace  WpfControl.Common  {
 //
 
 public abstract class  AbstractSimpleCommand<TDlgAct> : ICommand
+    where TDlgAct : System.Delegate
 {
 
 //========================================================================
