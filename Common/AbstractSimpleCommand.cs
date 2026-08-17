@@ -43,7 +43,7 @@ AbstractSimpleCommand(
 {
     this.m_execute  = execute ?? throw new ArgumentNullException(
             nameof(execute));
-    this.m_canExec  = canExecute;
+    this.m_canExec  = canExec;
 }
 
 
@@ -101,16 +101,6 @@ public  virtual  void
 raiseCanExecuteChanged()
 {
     CanExecuteChanged?.Invoke(this, EventArgs.Empty);
-}
-
-//----------------------------------------------------------------
-/**   CanExecuteChanged イベントを発生させる。
-**
-**/
-public  void
-RaiseCanExecuteChanged()
-{
-    raiseCanExecuteChangedEvent();
 }
 
 
