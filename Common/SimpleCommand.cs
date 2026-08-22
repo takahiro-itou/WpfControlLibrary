@@ -25,7 +25,6 @@ namespace  WpfControl.Common  {
 //
 
 public  class  SimpleCommand : AbstractSimpleCommand<Action>
-    where T : struct
 {
 
 //----------------------------------------------------------------
@@ -59,6 +58,7 @@ Execute(object? parameter)
 //
 
 public  class  SimpleCommand<T> : AbstractSimpleCommand<Action<T> >
+    where T : struct
 {
 
 //========================================================================
