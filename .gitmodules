@@ -1,3 +1,6 @@
+[submodule "Editor/BinaryEditor"]
+	path = Editor/BinaryEditor
+	url  = ../wpfucBinaryEditor.git
 [submodule "Sample/SampleControl"]
 	path = Sample/SampleControl
 	url  = ../wpfucSampleControl.git

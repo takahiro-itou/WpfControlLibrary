@@ -15,50 +15,17 @@
 using System.ComponentModel;
 using System.Windows.Input;
 
+using ExecPred = System.Predicate<object?>;
 
 namespace  WpfControl.Common  {
 
-
 //========================================================================
 //
-//    SimpleCommand  class.
+//    AbstractSimpleCommand  class.
 //
 
-public  class  SimpleCommand : AbstractSimpleCommand<Action>
-{
-
-//----------------------------------------------------------------
-/**   コンストラクタ。
-**
-**/
-public
-SimpleCommand(
-        Action              execute,
-        Predicate<object?>? canExecute = null)
-    : base(execute, canExecute)
-{
-}
-
-//----------------------------------------------------------------
-/**
-**
-**/
-public  override  void
-Execute(object? parameter)
-{
-    this.m_execute();
-}
-
-}   //  End class  SimpleCommand
-
-
-//========================================================================
-//
-//    SimpleCommand<T>  class.
-//
-
-public  class  SimpleCommand<T> : AbstractSimpleCommand<Action<T> >
-    where T : struct
+public abstract class  AbstractSimpleCommand<TDlgAct> : ICommand
+    where TDlgAct : System.Delegate
 {
 
 //========================================================================
@@ -71,12 +38,27 @@ public  class  SimpleCommand<T> : AbstractSimpleCommand<Action<T> >
 **
 **/
 public
-SimpleCommand(
-        Action<T>           execute,
-        Predicate<object?>? canExecute = null)
-    : base(execute, canExecute)
+AbstractSimpleCommand(
+        TDlgAct     execute,
+        ExecPred?   canExec = null)
 {
+    this.m_execute  = execute ?? throw new ArgumentNullException(
+            nameof(execute));
+    this.m_canExec  = canExec;
 }
+
+
+//========================================================================
+//
+//    Public Member Functions (Pure Virtual Functions).
+//
+
+//----------------------------------------------------------------
+/**
+**
+**/
+public  abstract  void
+Execute(object? parameter);
 
 
 //========================================================================
@@ -85,20 +67,27 @@ SimpleCommand(
 //
 
 //----------------------------------------------------------------
+/**   コマンドが実行可能か否かを返す。
+**
+**/
+public  bool
+CanExecute(object? parameter)
+{
+    return ( this.m_canExec?.Invoke(parameter) ?? true );
+}
+
+
+//========================================================================
+//
+//    Public Events (Implement Interface).
+//
+
+//----------------------------------------------------------------
 /**
 **
 **/
-public  override  void
-Execute(object? parameter)
-{
-    T tparam = default(T);
-    if (parameter is not null) {
-        tparam = (parameter is T)
-            ? (T)parameter
-            : convertFrom(parameter);
-    }
-    this.m_execute(tparam);
-}
+public  event   EventHandler?   CanExecuteChanged;
+
 
 //========================================================================
 //
@@ -106,15 +95,13 @@ Execute(object? parameter)
 //
 
 //----------------------------------------------------------------
-/**
+/**   CanExecuteChanged イベントを発生させる。
 **
 **/
-public  static  T
-convertFrom(object parameter)
+public  virtual  void
+raiseCanExecuteChanged()
 {
-    T?  tmp = (T?)s_typeConverter.ConvertFrom(parameter);
-    if (tmp is T val) { return ( val ); }
-    return  default(T);
+    CanExecuteChanged?.Invoke(this, EventArgs.Empty);
 }
 
 
@@ -123,9 +110,13 @@ convertFrom(object parameter)
 //    Member Variables.
 //
 
-private  static     TypeConverter
-    s_typeConverter = TypeDescriptor.GetConverter(typeof(T));
+/**   実行する内容。    **/
+protected readonly  TDlgAct     m_execute;
 
-}   //  End class  SimpleCommand<T>
+/**   実行可否の判定。  **/
+private   readonly  ExecPred?   m_canExec;
+
+
+}   //  End class  AbstractSimpleCommand
 
 }   //  End of namespace  WpfControl.Common
