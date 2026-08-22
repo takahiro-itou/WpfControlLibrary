@@ -25,6 +25,7 @@ namespace  WpfControl.Common  {
 //
 
 public  class  SimpleCommand : AbstractSimpleCommand<Action>
+    where T : struct
 {
 
 //----------------------------------------------------------------
@@ -94,7 +95,7 @@ Execute(object? parameter)
     if (parameter is not null) {
         tparam = (parameter is T)
             ? (T)parameter
-            : (T)s_typeConverter.ConvertFrom(parameter);
+            : convertFrom(parameter);
     }
     this.m_execute(tparam);
 }
@@ -103,6 +104,19 @@ Execute(object? parameter)
 //
 //    Public Member Functions.
 //
+
+//----------------------------------------------------------------
+/**
+**
+**/
+public  static  T
+convertFrom(object parameter)
+{
+    T?  tmp = (T?)s_typeConverter.ConvertFrom(parameter);
+    if (tmp is T val) { return ( val ); }
+    return  default(T);
+}
+
 
 //========================================================================
 //
