@@ -16,7 +16,11 @@
   <Import Project="Props\OutputLibs.props" />
 
   <ItemGroup>
+    <Compile Include="Common\AbstractSimpleCommand.cs" />
     <Compile Include="Common\SimpleCommand.cs" />
+
+    <Compile Include="Editor\BinaryEditor\BinaryEditor.xaml.cs" />
+    <Compile Include="Editor\BinaryEditor\HexRenderElement.cs" />
 
     <Compile Include="Sample\SampleControl\AbstractSampleModel.cs" />
     <Compile Include="Sample\SampleControl\ISampleModel.cs" />
