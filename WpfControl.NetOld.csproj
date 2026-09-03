@@ -23,6 +23,10 @@
 
     <Compile Include="Editor\BinaryEditor\BinaryEditor.xaml.cs" />
     <Compile Include="Editor\BinaryEditor\HexRenderElement.cs" />
+    <Compile Include="Editor\MatrixExitor\MatrixCellData.cs" />
+    <Compile Include="Editor\MatrixExitor\MatrixCellData.cs" />
+    <Compile Include="Editor\MatrixExitor\MatrixEditor.cs" />
+    <Compile Include="Editor\MatrixExitor\MatrixViewer.cs" />
 
     <Compile Include="Sample\SampleControl\AbstractSampleModel.cs" />
     <Compile Include="Sample\SampleControl\ISampleModel.cs" />
