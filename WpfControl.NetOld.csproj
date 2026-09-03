@@ -24,6 +24,7 @@
     <Compile Include="Editor\BinaryEditor\BinaryEditor.xaml.cs" />
     <Compile Include="Editor\BinaryEditor\HexRenderElement.cs" />
     <Compile Include="Editor\MatrixEditor\MatrixCellData.cs" />
+    <Compile Include="Editor\MatrixEditor\MatrixDisplay.cs" />
     <Compile Include="Editor\MatrixEditor\MatrixEditor.cs" />
     <Compile Include="Editor\MatrixEditor\MatrixViewer.cs" />
 
