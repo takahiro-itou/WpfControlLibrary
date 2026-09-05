@@ -24,7 +24,8 @@ namespace  WpfControl.Common  {
 //    AbstractScrollInfo  class.
 //
 
-public abstract class  AbstractScrollInfo : IScrollInfo
+public  abstract class  ScrollFrameworkElementBase
+    : System.Windows.FrameworkElement, IScrollInfo
 {
 
 //========================================================================
@@ -38,7 +39,7 @@ public abstract class  AbstractScrollInfo : IScrollInfo
 **/
 
 public
-AbstractScrollInfo()
+ScrollFrameworkElementBase()
 {
 }
 
@@ -229,7 +230,12 @@ public  abstract  double  SmallChangeY { get; set; }
 **
 **/
 
-protected  abstract  void  refreshViewport();
+protected  virtual  void
+refreshViewport()
+{
+    this.InvalidateVisual();
+}
+
 
 //----------------------------------------------------------------
 /**
