@@ -196,10 +196,13 @@ public  virtual  double  HorizontalOffset {
 }
 
 
-public  virtual  ScrollViewer  ScrollOwner
+public  virtual  ScrollViewer?  ScrollOwner
 {
     get { return  this.m_scrollOwner; }
-    set { this.m_scrollOwner = value; }
+    set {
+        this.m_scrollOwner = value;
+        this.m_scrollOwner?.InvalidateScrollInfo();
+    }
 }
 
 
