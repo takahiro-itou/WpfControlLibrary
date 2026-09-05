@@ -48,6 +48,78 @@ AbstractScrollInfo()
 //    Public Member Functions (Implement Interface).
 //
 
+public  virtual  void
+LineDown()
+{
+}
+
+public  virtual  void
+LineLeft()
+{
+}
+
+public  virtual  void
+LineRight()
+{
+}
+
+public  virtual  void
+LineUp()
+{
+    SetVerticalOffset(this.VerticalOffset - this.SmallChangeY);
+}
+
+
+public  virtual  System.Windows.Rect
+MakeVisible(
+        System.Windows.Media.Visual visual,
+        System.Windows.Rect         rectangle)
+{
+    return ( rectangle );
+}
+
+
+public  virtual  void
+MouseWheelDown()
+{
+}
+
+public  virtual  void
+MouseWheelLeft()
+{
+}
+
+public  virtual  void
+MouseWheelRight()
+{
+}
+
+public  virtual  void
+MouseWheelUp()
+{
+}
+
+public  virtual  void
+PageDown()
+{
+}
+
+public  virtual  void
+PageLeft()
+{
+}
+
+public  virtual  void
+PageRight()
+{
+}
+
+public  virtual  void
+PageUp()
+{
+}
+
+
 //----------------------------------------------------------------
 /**
 **
@@ -123,6 +195,10 @@ public  virtual  double  ViewportWidth {
     get { return  this.m_viewport.Width; }
 }
 
+
+public  virtual  double  SmallChangeX { get; set; } = 1.0;
+
+public  virtual  double  SmallChangeY { get; set; } = 1.0;
 
 
 //========================================================================
