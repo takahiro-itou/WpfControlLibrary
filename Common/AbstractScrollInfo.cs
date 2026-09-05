@@ -12,6 +12,9 @@
 **                                                                      **
 *************************************************************************/
 
+using   System.Windows.Controls;
+using   System.Windows.Controls.Primitives;
+
 
 namespace  WpfControl.Common  {
 
@@ -21,7 +24,7 @@ namespace  WpfControl.Common  {
 //    AbstractScrollInfo  class.
 //
 
-public  class  AbstractScrollInfo : IScrollInfo
+public abstract class  AbstractScrollInfo : IScrollInfo
 {
 
 //========================================================================
@@ -35,7 +38,7 @@ public  class  AbstractScrollInfo : IScrollInfo
 **/
 
 public
-AbstractScrollInfo(
+AbstractScrollInfo()
 {
 }
 
@@ -44,6 +47,125 @@ AbstractScrollInfo(
 //
 //    Public Member Functions (Implement Interface).
 //
+
+//----------------------------------------------------------------
+/**
+**
+**/
+
+public  virtual  void
+SetHorizontalOffset(
+        double  offset)
+{
+    double  val = Math.Max(0, Math.Min(
+        offset, this.ExtentWidth - this.ViewportWidth));
+    if ( this.m_scrollOffset.X != val ) {
+        this.m_scrollOffset.X = val;
+        invalidateScroll();
+    }
+}
+
+//----------------------------------------------------------------
+/**
+**
+**/
+
+public  virtual  void
+SetVerticalOffset(
+        double  offset)
+{
+    double  val = Math.Max(0, Math.Min(
+        offset, this.ExtentHeight - this.ViewportHeight));
+    if ( this.m_scrollOffset.X != val ) {
+        this.m_scrollOffset.X = val;
+        invalidateScroll();
+    }
+}
+
+
+//========================================================================
+//
+//    Properties (Implement Interface).
+//
+
+public  virtual  bool  CanHorizontallyScroll { get; set; }
+
+public  virtual  bool  CanVerticallyScroll   { get; set; }
+
+
+public  abstract double  ExtentHeight { get; }
+
+public  abstract double  ExtentWidth  { get; }
+
+
+public  virtual  double  HorizontalOffset {
+    get { return  this.m_scrollOffset.X; }
+}
+
+
+public  virtual  ScrollViewer  ScrollOwner
+{
+    get { return  this.m_scrollOwner; }
+    set { this.m_scrollOwner = value; }
+}
+
+
+public  virtual  double  VerticalOffset {
+    get { return  this.m_scrollOffset.Y; }
+}
+
+
+public  virtual  double  ViewportHeight {
+    get { return  this.m_viewport.Height; }
+}
+
+public  virtual  double  ViewportWidth {
+    get { return  this.m_viewport.Width; }
+}
+
+
+
+//========================================================================
+//
+//    Protected Member Functions (Overrides).
+//
+
+
+//========================================================================
+//
+//    Protected Member Functions.
+//
+
+//----------------------------------------------------------------
+/**
+**
+**/
+
+protected  abstract  void  refreshViewport();
+
+//----------------------------------------------------------------
+/**
+**
+**/
+
+protected  virtual  void
+invalidateScrollView()
+{
+    this.m_scrollOwner?.InvalidateScrollInfo();
+    refreshViewport();
+}
+
+
+//========================================================================
+//
+//    Member Variables.
+//
+
+private   System.Windows.Size   m_viewport;
+
+private   System.Windows.Point  m_scrollOffset;
+
+private   ScrollViewer          m_scrollOwner;
 
 }   //  End class  AbstractScrollInfo
 
