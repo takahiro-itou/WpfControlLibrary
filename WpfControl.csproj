@@ -16,7 +16,10 @@
   <Import Project="Props\OutputLibs.props" />
 
   <ItemGroup>
+    <Compile Include="AssemblyInfo.cs" />
+
     <Compile Include="Common\AbstractSimpleCommand.cs" />
+    <Compile Include="Common\ScrollFrameworkElementBase.cs" />
     <Compile Include="Common\SimpleCommand.cs" />
 
     <Compile Include="Editor\BinaryEditor\BinaryEditor.xaml.cs" />
