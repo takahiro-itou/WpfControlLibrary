@@ -161,8 +161,8 @@ SetVerticalOffset(
 {
     double  val = Math.Max(0, Math.Min(
         offset, this.ExtentHeight - this.ViewportHeight));
-    if ( this.m_scrollOffset.X != val ) {
-        this.m_scrollOffset.X = val;
+    if ( this.m_scrollOffset.Y != val ) {
+        this.m_scrollOffset.Y = val;
         invalidateScrollView();
     }
 }
