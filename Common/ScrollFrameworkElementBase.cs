@@ -167,6 +167,19 @@ SetVerticalOffset(
     }
 }
 
+//========================================================================
+//
+//    Properties (Abstract).
+//
+
+public  abstract  double  ExtentHeight { get; }
+
+public  abstract  double  ExtentWidth  { get; }
+
+public  abstract  double  SmallChangeX { get; }
+
+public  abstract  double  SmallChangeY { get; }
+
 
 //========================================================================
 //
@@ -176,11 +189,6 @@ SetVerticalOffset(
 public  virtual  bool  CanHorizontallyScroll { get; set; }
 
 public  virtual  bool  CanVerticallyScroll   { get; set; }
-
-
-public  abstract double  ExtentHeight { get; }
-
-public  abstract double  ExtentWidth  { get; }
 
 
 public  virtual  double  HorizontalOffset {
@@ -207,11 +215,6 @@ public  virtual  double  ViewportHeight {
 public  virtual  double  ViewportWidth {
     get { return  this.m_viewport.Width; }
 }
-
-
-public  abstract  double  SmallChangeX { get; set; }
-
-public  abstract  double  SmallChangeY { get; set; }
 
 
 //========================================================================
