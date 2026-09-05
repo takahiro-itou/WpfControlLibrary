@@ -51,16 +51,19 @@ AbstractScrollInfo()
 public  virtual  void
 LineDown()
 {
+    SetVerticalOffset(this.VerticalOffset + this.SmallChangeY);
 }
 
 public  virtual  void
 LineLeft()
 {
+    SetHorizontalOffset(this.HorizontalOffset - this.SmallChangeX);
 }
 
 public  virtual  void
 LineRight()
 {
+    SetHorizontalOffset(this.HorizontalOffset + this.SmallChangeX);
 }
 
 public  virtual  void
@@ -82,41 +85,50 @@ MakeVisible(
 public  virtual  void
 MouseWheelDown()
 {
+    LineDown();
 }
 
 public  virtual  void
 MouseWheelLeft()
 {
+    LineLeft();
 }
 
 public  virtual  void
 MouseWheelRight()
 {
+    LineRight();
 }
 
 public  virtual  void
 MouseWheelUp()
 {
+    LineUp();
 }
+
 
 public  virtual  void
 PageDown()
 {
+    SetVerticalOffset(this.VerticalOffset + this.ViewportHeight);
 }
 
 public  virtual  void
 PageLeft()
 {
+    SetHorizontalOffset(this.HorizontalOffset - this.ViewportWidth);
 }
 
 public  virtual  void
 PageRight()
 {
+    SetHorizontalOffset(this.HorizontalOffset + this.ViewportWidth);
 }
 
 public  virtual  void
 PageUp()
 {
+    SetVerticalOffset(this.VerticalOffset - this.ViewportHeight);
 }
 
 
@@ -133,7 +145,7 @@ SetHorizontalOffset(
         offset, this.ExtentWidth - this.ViewportWidth));
     if ( this.m_scrollOffset.X != val ) {
         this.m_scrollOffset.X = val;
-        invalidateScroll();
+        invalidateScrollView();
     }
 }
 
@@ -150,7 +162,7 @@ SetVerticalOffset(
         offset, this.ExtentHeight - this.ViewportHeight));
     if ( this.m_scrollOffset.X != val ) {
         this.m_scrollOffset.X = val;
-        invalidateScroll();
+        invalidateScrollView();
     }
 }
 
@@ -196,9 +208,9 @@ public  virtual  double  ViewportWidth {
 }
 
 
-public  virtual  double  SmallChangeX { get; set; } = 1.0;
+public  abstract  double  SmallChangeX { get; set; }
 
-public  virtual  double  SmallChangeY { get; set; } = 1.0;
+public  abstract  double  SmallChangeY { get; set; }
 
 
 //========================================================================
@@ -241,7 +253,7 @@ private   System.Windows.Size   m_viewport;
 
 private   System.Windows.Point  m_scrollOffset;
 
-private   ScrollViewer          m_scrollOwner;
+private   ScrollViewer?         m_scrollOwner;
 
 }   //  End class  AbstractScrollInfo
 
