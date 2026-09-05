@@ -222,6 +222,22 @@ public  virtual  double  ViewportWidth {
 //    Protected Member Functions (Overrides).
 //
 
+//----------------------------------------------------------------
+/**
+**
+**/
+
+protected  override  System.Windows.Size
+MeasureOverride(
+        System.Windows.Size     availableSize)
+{
+    if ( this.m_viewport != availableSize ) {
+        this.m_viewport = availableSize;
+        this.m_scrollOwner?.InvalidateScrollInfo();
+    }
+    return ( availableSize );
+}
+
 
 //========================================================================
 //
