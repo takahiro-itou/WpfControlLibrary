@@ -18,6 +18,7 @@
   <Import Project="Props\OutputLibs.props" />
 
   <ItemGroup>
+    <Compile Include="Common\AbstractScrollInfo.cs" />
     <Compile Include="Common\AbstractSimpleCommand.cs" />
     <Compile Include="Common\SimpleCommand.cs" />
 
