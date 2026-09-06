@@ -111,25 +111,29 @@ MouseWheelUp()
 public  virtual  void
 PageDown()
 {
-    SetVerticalOffset(this.VerticalOffset + this.ViewportHeight);
+    double  inc = getPageScrollAmount(ViewportHeight, SmallChangeY);
+    SetVerticalOffset(this.VerticalOffset + inc);
 }
 
 public  virtual  void
 PageLeft()
 {
-    SetHorizontalOffset(this.HorizontalOffset - this.ViewportWidth);
+    double  inc = getPageScrollAmount(ViewportWidth, SmallChangeX);
+    SetHorizontalOffset(this.HorizontalOffset - inc);
 }
 
 public  virtual  void
 PageRight()
 {
-    SetHorizontalOffset(this.HorizontalOffset + this.ViewportWidth);
+    double  inc = getPageScrollAmount(ViewportWidth, SmallChangeX);
+    SetHorizontalOffset(this.HorizontalOffset + inc);
 }
 
 public  virtual  void
 PageUp()
 {
-    SetVerticalOffset(this.VerticalOffset - this.ViewportHeight);
+    double  inc = getPageScrollAmount(ViewportHeight, SmallChangeY);
+    SetVerticalOffset(this.VerticalOffset - inc);
 }
 
 
@@ -246,6 +250,18 @@ MeasureOverride(
 //
 //    Protected Member Functions.
 //
+
+protected  virtual  double
+getPageScrollAmount(
+        double  vpSize,
+        double  smSize)
+{
+    double  inc = vpSize - smSize;
+    double  steps = smSize;
+    double  scr = (steps > 0) ? Math.Floor(inc / steps) * steps : inc;
+    return ( scr <= 0 ? vpSize : scr );
+}
+
 
 //----------------------------------------------------------------
 /**
