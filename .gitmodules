@@ -13,3 +13,6 @@
 [submodule "Utils/RectSelectWindow"]
 	path = Utils/RectSelectWindow
 	url  = ../wpfRectSelectWindow.git
+[submodule "WpfHelper"]
+	path = WpfHelper
+	url  = ../WpfHelper.git
