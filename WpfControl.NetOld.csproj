@@ -17,31 +17,14 @@
 
   <Import Project="Props\OutputLibs.props" />
 
+  <Import Project="WpfHelper\WpfHelper.props" />
+  <Import Project="Editor\BinaryEditor\Targets.props" />
+  <Import Project="Editor\MatrixEditor\Targets.props" />
+  <Import Project="Sample\SampleControl\Targets.props" />
+  <Import Project="Utils\ProgressBar\Targets.props" />
+
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
-
-    <Compile Include="Common\AbstractSimpleCommand.cs" />
-    <Compile Include="Common\ScrollFrameworkElementBase.cs" />
-    <Compile Include="Common\SimpleCommand.cs" />
-
-    <Compile Include="Editor\BinaryEditor\BinaryEditor.xaml.cs" />
-    <Compile Include="Editor\BinaryEditor\HexRenderElement.cs" />
-    <Compile Include="Editor\MatrixEditor\MatrixCellData.cs" />
-    <Compile Include="Editor\MatrixEditor\MatrixDisplay.cs" />
-    <Compile Include="Editor\MatrixEditor\MatrixEditor.cs" />
-    <Compile Include="Editor\MatrixEditor\MatrixViewer.cs" />
-
-    <Compile Include="Sample\SampleControl\AbstractSampleModel.cs" />
-    <Compile Include="Sample\SampleControl\ISampleModel.cs" />
-    <Compile Include="Sample\SampleControl\ISampleViewModel.cs" />
-    <Compile Include="Sample\SampleControl\SampleControl.xaml.cs" />
-    <Compile Include="Sample\SampleControl\SampleViewModel.cs" />
-
-    <Compile Include="Utils\ProgressBar\AbstractProgressModel.cs" />
-    <Compile Include="Utils\ProgressBar\IProgressModel.cs" />
-    <Compile Include="Utils\ProgressBar\IProgressViewModel.cs" />
-    <Compile Include="Utils\ProgressBar\ProgressControl.xaml.cs" />
-    <Compile Include="Utils\ProgressBar\ProgressViewModel.cs" />
   </ItemGroup>
 
 </Project>
