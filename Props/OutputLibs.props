@@ -4,11 +4,13 @@
   <PropertyGroup>
     <OBJ_BASE_DIR>$(SolutionDir)Objs</OBJ_BASE_DIR>
     <LIB_BASE_DIR>$(SolutionDir)Libs</LIB_BASE_DIR>
+    <BIN_BASE_DIR>$(SolutionDir)Bin</BIN_BASE_DIR>
     <CONFIG_NAME>$(Platform)-$(Configuration)</CONFIG_NAME>
+    <OUTDIR_CONFIG>$(CONFIG_NAME)\$(TargetFramework)</OUTDIR_CONFIG>
 
-    <IntDir>$(OBJ_BASE_DIR)\$(CONFIG_NAME)\$(ProjectName)\</IntDir>
+    <IntDir>$(OBJ_BASE_DIR)\$(OUTDIR_CONFIG)\$(MSBuildProjectName)\</IntDir>
     <IntermediateOutputPath>$(IntDir)</IntermediateOutputPath>
-    <OutDir>$(LIB_BASE_DIR)\$(CONFIG_NAME)\$(ProjectName)\</OutDir>
+    <OutDir>$(LIB_BASE_DIR)\$(OUTDIR_CONFIG)\$(MSBuildProjectName)\</OutDir>
   </PropertyGroup>
 
 </Project>
