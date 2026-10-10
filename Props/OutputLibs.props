@@ -2,14 +2,15 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
   <PropertyGroup>
-    <OBJ_BASE_DIR>$(SolutionDir)Objs</OBJ_BASE_DIR>
-    <LIB_BASE_DIR>$(SolutionDir)Libs</LIB_BASE_DIR>
-    <BIN_BASE_DIR>$(SolutionDir)Bin</BIN_BASE_DIR>
     <CONFIG_NAME>$(Platform)-$(Configuration)</CONFIG_NAME>
     <OUTDIR_CONFIG>$(CONFIG_NAME)\$(TargetFramework)</OUTDIR_CONFIG>
+  </PropertyGroup>
 
-    <IntDir>$(OBJ_BASE_DIR)\$(OUTDIR_CONFIG)\$(MSBuildProjectName)\</IntDir>
+  <PropertyGroup>
+    <IntDir>$(OBJ_BASE_DIR)\$(CONFIG_NAME)\$(MSBuildProjectName)\</IntDir>
     <IntermediateOutputPath>$(IntDir)</IntermediateOutputPath>
+    <_IntermediateOutputPath>$(IntermediateOutputPath)</_IntermediateOutputPath>
+
     <OutDir>$(LIB_BASE_DIR)\$(OUTDIR_CONFIG)\$(MSBuildProjectName)\</OutDir>
   </PropertyGroup>
 
