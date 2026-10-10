@@ -6,9 +6,10 @@
     <OUTDIR_CONFIG>$(CONFIG_NAME)\$(TargetFramework)</OUTDIR_CONFIG>
   </PropertyGroup>
 
+  <!--  NET プロジェクト (C#, VB.NET) の設定  -->
   <PropertyGroup>
-    <IntDir>$(OBJ_BASE_DIR)\$(CONFIG_NAME)\$(MSBuildProjectName)\</IntDir>
-    <IntermediateOutputPath>$(IntDir)</IntermediateOutputPath>
+    <IntDir>$(OBJ_BASE_DIR)\$(CONFIG_NAME)</IntDir>
+    <IntermediateOutputPath>$(IntDir)\</IntermediateOutputPath>
     <_IntermediateOutputPath>$(IntermediateOutputPath)</_IntermediateOutputPath>
 
     <OutDir>$(LIB_BASE_DIR)\$(OUTDIR_CONFIG)\$(MSBuildProjectName)\</OutDir>
