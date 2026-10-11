@@ -3,8 +3,8 @@
 
   <PropertyGroup>
     <OBJ_BASE_DIR>$(SolutionDir)Objs\$(MSBuildProjectName)</OBJ_BASE_DIR>
-    <LIB_BASE_DIR>$(SolutionDir)Libs</LIB_BASE_DIR>
     <BIN_BASE_DIR>$(SolutionDir)Bin</BIN_BASE_DIR>
+    <LIB_BASE_DIR>$(SolutionDir)Libs</LIB_BASE_DIR>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(MSBuildProjectExtension)' != '.vcxproj'">
