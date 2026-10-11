@@ -13,7 +13,7 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
-  <Import Project="Props\OutputLibs.props" />
+  <Import Project="$(MSBuildThisFileDirectory)\Props\OutputLibs.props" />
 
   <Import Project="WpfHelper\WpfHelper.props" />
   <Import Project="Editor\BinaryEditor\Targets.props" />
